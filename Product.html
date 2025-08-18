@@ -1,0 +1,339 @@
+<!-- Home Page -->
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="auto">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+  <meta name="generator" content="Astro v5.9.2">
+  <title>Product example · Bootstrap v5.3</title>
+  <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/product/">
+  <script src="../assets/js/color-modes.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+  <meta name="theme-color" content="#712cf9">
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="style/style.css">
+</head>
+
+<body>
+  <!-- Nav Bar -->
+  <nav class="navbar navbar-expand-lg bg-light">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="index.html">My Store</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="Product.html">Products</a></li>
+          <li class="nav-item"><a class="nav-link" href="Contact.html">Contact</a></li>
+          <li class="nav-item"><a class="nav-link" href="Cart.html"><i class="bi bi-cart"></i></a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- อธิบายเกี่ยวกับ หน้า Product -->
+    <section class="py-5 text-center container">
+      <div class="row">
+        <h1 class="fw-light" style="margin-bottom: 20px; text-transform: uppercase;">All product in My Store</h1>
+        <div class="col-lg-4 col-md-8 mx-auto">
+          <img src="https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/8e4313112554403.60186ea0c7798.jpg"
+            class="img-fluid mb-4" alt="Example Image">
+          <h5 class="fw-light">INTEL</h5>
+          <p class="lead text-body-secondary" style="text-align: justify; line-height:1.6; font-size: 0.95rem;">The Arc
+            series includes A-series, B-series, and Arc Pro GPUs for gaming
+            and content creation, competing with NVIDIA and AMD, and supporting ray tracing and AI upscaling.
+          </p>
+        </div>
+        <div class="col-lg-4 col-md-8 mx-auto">
+          <img src="https://wallpaperbat.com/img/9712345-nvidia-wallpaper.jpg" class="img-fluid mb-4"
+            alt="Example Image">
+          <h5 class="fw-light">NVIDIA</h5>
+          <p class="lead text-body-secondary" style="text-align: justify; line-height:1.6; font-size: 0.95rem;">The RTX
+            series offers high-performance GPUs for gaming and content
+            creation, featuring ray tracing, AI, and strong visual fidelity across RTX 20, 30, 40 and 50 models.
+          </p>
+        </div>
+        <div class="col-lg-4 col-md-8 mx-auto">
+          <img src="https://cdn.thefpsreview.com/wp-content/uploads/2020/10/amd-logo-ruby-red.jpg.webp"
+            class="img-fluid mb-4" alt="Example Image">
+          <h5 class="fw-light">AMD</h5>
+          <p class="lead text-body-secondary" style="text-align: justify; line-height:1.6; font-size: 0.95rem;">The
+            Radeon RX 9000 series (RDNA 4) is AMD’s latest gaming GPU line, offering high performance, visual fidelity,
+            AI acceleration, ray tracing, and upscaling.
+          </p>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- Filter Section -->
+    <div class="container mb-4">
+      <div class="row justify-content-end">
+        <!-- Filter by Brand -->
+        <div class="col-auto ">
+          <select id="brandFilter" class="form-select">
+            <option value="all">All Brands</option>
+            <option value="NVIDIA">NVIDIA</option>
+            <option value="AMD">AMD</option>
+            <option value="intel">Intel ARC</option>
+          </select>
+        </div>
+
+        <!-- Sort by Price -->
+        <div class="col-auto">
+          <select id="priceSort" class="form-select">
+            <option value="none">Sort by Price</option>
+            <option value="asc">Price: Low to High</option>
+            <option value="desc">Price: High to Low</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="album py-5 bg-body-tertiary">
+
+
+      <div class="container">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+          <!-- 1 ***************************************************************************************************** -->
+          <div class="col" data-name="RTX 3070" data-brand="NVIDIA" data-price="17600">
+            <div class="product-item card shadow-sm">
+              <img src="https://m.media-amazon.com/images/I/61XC1vb1HFL.jpg" class="bd-placeholder-img card-img-top"
+                alt="RTX 3070" style="height: 225px; object-fit: cover; width: 100%; border-color: black;">
+
+              <div class="card-body">
+                <h5>RTX 3070</h5>
+                <p class="card-text">Price : 17,600 Baht</p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                    <a href="products/PD1_RTX3070.html" class="btn btn-sm btn-outline-secondary me-2">View Detail</a>
+                    <button type="button" class="btn btn-sm btn-outline-secondary add-to-cart">Add to Cart</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- 2 ***************************************************************************************************** -->
+          <div class="col" data-name="RTX 3070ti" data-brand="NVIDIA" data-price="20900">
+            <div class="product-item card shadow-sm">
+              <img
+                src="https://90a1c75758623581b3f8-5c119c3de181c9857fcb2784776b17ef.ssl.cf2.rackcdn.com/678494_682864_01_front_zoom.jpg"
+                class="bd-placeholder-img card-img-top" alt="RTX 3070ti"
+                style="height: 225px; object-fit: cover; width: 100%; border-color: black;">
+
+              <div class="card-body">
+                <h5>RTX 3070ti</h5>
+                <p class="card-text">Price : 20,900 Baht</p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                    <a href="products/PD2_RTX3070ti.html" class="btn btn-sm btn-outline-secondary me-2">View Detail</a>
+                    <button type="button" class="btn btn-sm btn-outline-secondary add-to-cart">Add to Cart</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- 3 ***************************************************************************************************** -->
+          <div class="col BS BS2" data-name="RTX 4060ti" data-brand="NVIDIA" data-price="15700">
+            <div class="product-item card shadow-sm">
+              <img src="https://notebookspec.com/storage/pc-vga/1819-1.png" class="bd-placeholder-img card-img-top"
+                alt="RTX 4060ti" style="height: 225px; object-fit: cover; width: 100%; border-color: black;">
+
+              <div class="card-body">
+                <h5>RTX 4060ti</h5>
+                <p class="card-text">Price : 15,700 Baht</p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                    <a href="products/PD3_RTX4060ti.html" class="btn btn-sm btn-outline-secondary me-2">View Detail</a>
+                    <button type="button" class="btn btn-sm btn-outline-secondary add-to-cart">Add to Cart</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- 4 ***************************************************************************************************** -->
+          <div class="col" data-name="RTX 5070" data-brand="NVIDIA" data-price="19500">
+            <div class="product-item card shadow-sm">
+              <img src="https://sv1.img.in.th/79QSA3.jpeg" class="bd-placeholder-img card-img-top" alt="RTX 5070"
+                style="height: 225px; object-fit: cover; width: 100%; border-color: black;">
+
+              <div class="card-body">
+                <h5>RTX 5070</h5>
+                <p class="card-text">Price : 19,500 Baht</p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                    <a href="products/PD4_RTX5070.html" class="btn btn-sm btn-outline-secondary me-2">View Detail</a>
+                    <button type="button" class="btn btn-sm btn-outline-secondary add-to-cart">Add to Cart</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- 5 ***************************************************************************************************** -->
+          <div class="col BS BS2" data-name="RX 9060 XT" data-brand="AMD" data-price="11500">
+            <div class="product-item card shadow-sm">
+              <img
+                src="https://www.amd.com/content/dam/amd/en/images/products/graphics/radeon-rx-9060xt/3248000-radeon-rx-9060xt-product.jpg"
+                class="bd-placeholder-img card-img-top" alt="RX 9060 XT"
+                style="height: 225px; object-fit: cover; width: 100%; border-color: black;">
+
+              <div class="card-body">
+                <h5>RX 9060 XT</h5>
+                <p class="card-text">Price : 11,500 Baht</p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                    <a href="products/PD5_RX9060XT.html" class="btn btn-sm btn-outline-secondary me-2">View Detail</a>
+                    <button type="button" class="btn btn-sm btn-outline-secondary add-to-cart">Add to Cart</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- 6 ***************************************************************************************************** -->
+          <div class="col" data-name="RX 9070" data-brand="AMD" data-price="22900">
+            <div class="product-item card shadow-sm">
+              <img
+                src="https://www.amd.com/content/dam/amd/en/images/products/graphics/radeon-rx-9070/2922918-radeon-rx-9070-product.jpg"
+                class="bd-placeholder-img card-img-top" alt="RX 9070"
+                style="height: 225px; object-fit: cover; width: 100%; border-color: black;">
+
+              <div class="card-body">
+                <h5>RX 9070</h5>
+                <p class="card-text">Price : 22,900 Baht</p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                    <a href="products/PD6_RX9070.html" class="btn btn-sm btn-outline-secondary me-2">View Detail</a>
+                    <button type="button" class="btn btn-sm btn-outline-secondary add-to-cart">Add to Cart</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- 7 ***************************************************************************************************** -->
+          <div class="col" data-name="RX 9070 XT" data-brand="AMD" data-price="24900">
+            <div class="product-item card shadow-sm">
+              <img
+                src="https://www.amd.com/content/dam/amd/en/images/products/graphics/radeon-rx-9070/2922918-radeon-rx-9070xt-product.jpg"
+                class="bd-placeholder-img card-img-top" alt="RX 9070 XT"
+                style="height: 225px; object-fit: cover; width: 100%; border-color: black;">
+
+              <div class="card-body">
+                <h5>RX 9070 XT</h5>
+                <p class="card-text">Price : 24,900 Baht</p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                    <a href="products/PD7_RX9070XT.html" class="btn btn-sm btn-outline-secondary me-2">View Detail</a>
+                    <button type="button" class="btn btn-sm btn-outline-secondary add-to-cart">Add to Cart</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- 8 ***************************************************************************************************** -->
+          <div class="col DS DS2" data-name="ARC™ A750" data-brand="intel" data-price="6900">
+            <div class="product-item card shadow-sm">
+              <img src="https://m.media-amazon.com/images/I/61+eHxpXfOL.jpg" class="bd-placeholder-img card-img-top"
+                alt="ARC™ A750" style="height: 225px; object-fit: cover; width: 100%; border-color: black;">
+
+              <div class="card-body">
+                <h5>ARC™ A750</h5>
+                <p class="card-text">
+                  Price :
+                  <span class="old-price">7,500 Baht</span>
+                  <span class="new-price">6,900 Baht</span>
+                </p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                    <a href="products/PD8_ARC_A750.html" class="btn btn-sm btn-outline-secondary me-2">View Detail</a>
+                    <button type="button" class="btn btn-sm btn-outline-secondary add-to-cart">Add to Cart</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- 9 ***************************************************************************************************** -->
+          <div class="col" data-name="ARC™ B580" data-brand="intel" data-price="8890">
+            <div class="product-item card shadow-sm">
+              <img
+                src="https://www.pcwelt.de/wp-content/uploads/2024/12/arc-b580-shroud-alpha-00007-3.png?resize=1536%2C778&quality=50&strip=all"
+                class="bd-placeholder-img card-img-top" alt="ARC™ B580"
+                style="height: 225px; object-fit: cover; width: 100%; border-color: black;">
+
+              <div class="card-body">
+                <h5>ARC™ B580</h5>
+                <p class="card-text">Price : 8,890 Baht</p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                    <a href="products/PD9_ARC_B580.html" class="btn btn-sm btn-outline-secondary me-2">View Detail</a>
+                    <button type="button" class="btn btn-sm btn-outline-secondary add-to-cart">Add to Cart</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer-custom py-5">
+    <div class="container">
+      <div class="row text-center text-md-start align-items-center">
+
+        <!-- Contact Column -->
+        <div class="col-md-6 mb-3 mb-md-0">
+          <h6 class="fw-bold">My Store</h6>
+          <p class="mb-1">
+            My Store thanks all our customers for your trust and support. We're proud to deliver top-quality graphic
+            cards for the best gaming experience, and we hope you enjoy the very best from us.
+          </p>
+          <!-- <p class="mb-1">Thank you – My Store</p> -->
+        </div>
+
+
+        <!-- Social Media Column -->
+        <div class="col-md-3 mb-3 mb-md-0">
+          <h6 class="fw-bold">Product</h6>
+          <p class="mb-1"><i class="bi bi-nvidia me-2"></i></i>NVIDIA Geforce RTX series</p>
+          <p class="mb-1"><i class="bi bi-amd me-2"></i></i>AMD RADEON</p>
+          <p class="mb-1"><i class="bi bi-cpu me-2"></i></i>intel ARC™</p>
+        </div>
+
+        <!-- Contact Column -->
+        <div class="col-md-3 mb-3 mb-md-0">
+          <h6 class="fw-bold">Contact</h6>
+          <p class="mb-1"><i class="bi bi-telephone-fill me-2"></i>089-765-4321</p>
+          <p class="mb-1"><i class="bi bi-envelope-fill me-2"></i>My_Store_s@gmail.com</p>
+          <p class="mb-1"><i class="bi bi-geo-alt-fill me-2"></i>location</p>
+        </div>
+
+      </div>
+
+      <!-- Footer Bottom -->
+      <div class="text-center mt-4">
+        <div class="social-icons">
+          <a href="#" class="me-3"><i class="bi bi-facebook"></i></a>
+          <a href="#" class="me-3"><i class="bi bi-twitter-x"></i></a>
+          <a href="#" class="me-3"><i class="bi bi-instagram"></i></a>
+          <a href="#"><i class="bi bi-line"></i></a>
+        </div>
+        <p class="mb-1">All rights reserved &copy; Aug 2025 My Portfolio My Store</p>
+        <p><a href="#" class="text-decoration-none">Back to top</a></p>
+      </div>
+    </div>
+  </footer>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="script.js"></script>
+
+</body>
