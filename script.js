@@ -83,17 +83,18 @@ function GetContactInf() {
 }
 
 // ---------------------------------------------------------------------------------------------------------------
-// Product and Cart 
+// 2 Product and Cart 
+// ---------------------------------------------------------------------------------------------------------------
 
-// PRODUCT !!
 // โหลดตะกร้าจาก localStorage (ถ้ามี)
-let cart = JSON.parse(localStorage.getItem('cart')) || [];
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
 // บันทึกตะกร้าไปที่ localStorage
 function saveCart() {
-  localStorage.setItem('cart', JSON.stringify(cart));
+  localStorage.setItem("cart", JSON.stringify(cart));
 }
 
+// เพิ่มสินค้าเข้าตะกร้า
 function addToCart(name, price) {
   const existingItem = cart.find(item => item.name === name);
 
@@ -103,33 +104,48 @@ function addToCart(name, price) {
     cart.push({ name, price, quantity: 1 });
   }
 
-  saveCart(); // บันทึกตะกร้า
-  alert(`${name} added to cart!`); // แจ้งเตือนสั้นๆ
+  saveCart(); // บันทึก
+  renderCart(); // อัปเดตแสดงผล
+  alert(`${name} added to cart!`);
 }
 
+// ลบสินค้าออกจากตะกร้า
 function removeFromCart(name) {
   cart = cart.filter(item => item.name !== name);
   saveCart();
-  updateCartDisplay();
+  renderCart();
 }
 
-function updateCartDisplay() {
-  const cartItemsList = document.getElementById('cart-items');
-  const cartTotalSpan = document.getElementById('cart-total');
+// ฟังก์ชันแสดงผลตะกร้า
+function renderCart() {
+  const cartItemsContainer = document.getElementById("cart-items");
+  const cartTotal = document.getElementById("cart-total");
 
-  if (!cartItemsList || !cartTotalSpan) return; // ป้องกัน error ถ้าไม่ใช่หน้า cart.html
+  if (!cartItemsContainer || !cartTotal) return; // ป้องกัน error ถ้าไม่ใช่หน้า cart.html
 
+  cartItemsContainer.innerHTML = "";
   let total = 0;
-  cartItemsList.innerHTML = ''; // ล้างรายการเก่า
 
-  cart.forEach(item => {
-    const li = document.createElement('li');
-    li.className = 'list-group-item d-flex justify-content-between align-items-center';
-    li.textContent = `${item.name} x ${item.quantity}`;
+  if (cart.length === 0) {
+    cartItemsContainer.innerHTML = `<li class="list-group-item text-center">Your cart is empty</li>`;
+    cartTotal.innerText = "0.00 Baht";
+    return;
+  }
 
-    const priceSpan = document.createElement('span');
-    priceSpan.textContent = `${(item.price * item.quantity).toFixed(2)}`;
-    li.appendChild(priceSpan);
+  cart.forEach((item) => {
+    let itemTotal = item.price * item.quantity;
+    total += itemTotal;
+
+    const li = document.createElement("li");
+    li.classList.add("list-group-item", "d-flex", "justify-content-between", "align-items-center");
+
+    li.innerHTML = `
+      <div>
+        <h6 class="my-0">${item.name}</h6>
+        <small class="text-body-secondary">Qty: ${item.quantity} × ${item.price.toLocaleString()}</small>
+      </div>
+      <span class="text-body-secondary">${itemTotal.toLocaleString()} Baht</span>
+    `;
 
     // ปุ่มลบ
     const removeBtn = document.createElement('button');
@@ -138,11 +154,10 @@ function updateCartDisplay() {
     removeBtn.addEventListener('click', () => removeFromCart(item.name));
     li.appendChild(removeBtn);
 
-    cartItemsList.appendChild(li);
-    total += item.price * item.quantity;
+    cartItemsContainer.appendChild(li);
   });
 
-  cartTotalSpan.textContent = total.toFixed(2);
+  cartTotal.innerText = total.toLocaleString() + " Baht";
 }
 
 // Event Listener สำหรับปุ่ม Add to Cart (ในหน้า Product)
@@ -155,69 +170,8 @@ document.querySelectorAll('.add-to-cart').forEach(button => {
   });
 });
 
-
-// ---------------------------------------------------------------------------------------------------------------
-
 // โหลด cart เวลาเปิดหน้า cart.html
-document.addEventListener('DOMContentLoaded', updateCartDisplay);
-
-// CART !!
-document.addEventListener("DOMContentLoaded", function () {
-  let cart = JSON.parse(localStorage.getItem("cart")) || [];
-
-  function saveCart() {
-    localStorage.setItem("cart", JSON.stringify(cart));
-  }
-
-  function removeFromCart(name) {
-    cart = cart.filter(item => item.name !== name);
-    saveCart();
-    renderCart(); // รีเฟรช cart หลังลบ
-  }
-
-  function renderCart() {
-    const cartItemsContainer = document.getElementById("cart-items");
-    const cartTotal = document.getElementById("cart-total");
-    cartItemsContainer.innerHTML = "";
-
-    let total = 0;
-
-    if (cart.length === 0) {
-      cartItemsContainer.innerHTML = `<li class="list-group-item text-center">Your cart is empty</li>`;
-      cartTotal.innerText = "0.00 Baht";
-      return;
-    }
-
-    cart.forEach((item) => {
-      let itemTotal = item.price * item.quantity;
-      total += itemTotal;
-
-      const li = document.createElement("li");
-      li.classList.add("list-group-item", "d-flex", "justify-content-between", "align-items-center");
-
-      li.innerHTML = `
-        <div>
-          <h6 class="my-0">${item.name}</h6>
-          <small class="text-body-secondary">Qty: ${item.quantity} × ${item.price.toLocaleString()}</small>
-        </div>
-        <span class="text-body-secondary">${itemTotal.toLocaleString()} Baht</span>
-      `;
-
-      // ปุ่มลบ
-      const removeBtn = document.createElement('button');
-      removeBtn.textContent = 'Remove';
-      removeBtn.className = 'btn btn-sm btn-danger ms-2';
-      removeBtn.addEventListener('click', () => removeFromCart(item.name));
-      li.appendChild(removeBtn);
-
-      cartItemsContainer.appendChild(li);
-    });
-
-    cartTotal.innerText = total.toLocaleString() + " Baht";
-  }
-
-  renderCart();
-});
+document.addEventListener("DOMContentLoaded", renderCart);
 
 // ---------------------------------------------------------------------------------------------------------------
 // Cart เก็บข้อมูลที่อยู่, ข้อมูลการจ่ายเงิน และสินค้า
@@ -299,4 +253,5 @@ function GetBillAddInf() {
 
   alert("บันทึกข้อมูลการชำระเงินเรียบร้อยแล้ว!");
 }
+
 
